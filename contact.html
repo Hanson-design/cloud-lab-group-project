@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - Artiste Team</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f7f7f7;color:#222;padding:40px}
+    .card{max-width:600px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    h1{font-size:20px;margin:0 0 18px}
+    .contact-list{display:flex;flex-direction:column;gap:12px}
+    .contact{display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px solid #eee;border-radius:6px}
+    .meta{display:flex;flex-direction:column}
+    .name{font-weight:600}
+    .role{font-size:13px;color:#555}
+    .btn{background:#0078d4;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+    .btn:active{transform:translateY(1px)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Artiste Team Contacts</h1>
+    <div class="contact-list">
+      <div class="contact">
+        <div class="meta">
+          <div class="name">Hanson Otchere</div>
+          <div class="role">Group Leader</div>
+        </div>
+        <button class="btn" onclick="call('2425404214')">Call: 2425404214</button>
+      </div>
+
+      <div class="contact">
+        <div class="meta">
+          <div class="name">Jewel Quayegah</div>
+          <div class="role">GitHub Repository Manager</div>
+        </div>
+        <button class="btn" onclick="call('2425402793')">Call: 2425402793</button>
+      </div>
+
+      <div class="contact">
+        <div class="meta">
+          <div class="name">Solomon Robert Topson</div>
+          <div class="role">Website Design</div>
+        </div>
+        <button class="btn" onclick="call('2425400975')">Call: 2425400975</button>
+      </div>
+
+      <div class="contact">
+        <div class="meta">
+          <div class="name">Courage Amenyawu</div>
+          <div class="role">Content Writer</div>
+        </div>
+        <button class="btn" onclick="call('2425402184')">Call: 2425402184</button>
+      </div>
+
+      <div class="contact">
+        <div class="meta">
+          <div class="name">Gideon Osei Arthur</div>
+          <div class="role">Content Writer</div>
+        </div>
+        <button class="btn" onclick="call('2425403389')">Call: 2425403389</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function call(number){
+      // try to open tel: on supported devices, otherwise copy to clipboard
+      var tel = 'tel:' + number;
+      var a = document.createElement('a');
+      a.href = tel;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      if (!navigator.userAgent.match(/Mobi/)){
+        navigator.clipboard?.writeText(number).catch(()=>{});
+        alert('Number copied: ' + number);
+      }
+    }
+  </script>
+</body>
+</html>
 
