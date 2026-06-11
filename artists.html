@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artist Selector - Music Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #090909;
+      color: #f5f5f5;
+    }
+    header {
+      padding: 32px 24px;
+      background: #121212;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 2.1rem;
+    }
+    header p {
+      margin: 0;
+      color: #bbb;
+    }
+    main {
+      max-width: 1080px;
+      margin: 32px auto;
+      padding: 0 24px 48px;
+    }
+    .artist-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .artist-item {
+      background: #181818;
+      border: 1px solid #2d2d2d;
+      border-radius: 18px;
+      padding: 24px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .artist-item:hover {
+      transform: translateY(-4px);
+      background: #202020;
+    }
+    .artist-item h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+    }
+    .artist-item p {
+      margin: 0;
+      color: #bbb;
+    }
+    .artist-card {
+      background: #141414;
+      border: 1px solid #2c2c2c;
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .artist-card h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+    .artist-card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+    .track {
+      margin-top: 24px;
+    }
+    .track strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    iframe {
+      width: 100%;
+      min-height: 190px;
+      border: none;
+      border-radius: 16px;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Music Artist Selector</h1>
+    <p>Pick an artist to explore real tracks from Drake, Nicki Minaj, and Lil Wayne.</p>
+  </header>
+  <main>
+    <section class="artist-list">
+      <article class="artist-item" onclick="showArtist('drake')">
+        <h2>Drake</h2>
+        <p>One of the biggest names in modern rap and R&B.</p>
+      </article>
+      <article class="artist-item" onclick="showArtist('nicki')">
+        <h2>Nicki Minaj</h2>
+        <p>Queen of rap with chart-topping hits and iconic verses.</p>
+      </article>
+      <article class="artist-item" onclick="showArtist('lilwayne')">
+        <h2>Lil Wayne</h2>
+        <p>Legendary rapper behind Tha Carter era classics.</p>
+      </article>
+    </section>
+    <section id="artist-info"></section>
+  </main>
+  <script>
+    const artists = {
+      drake: {
+        name: 'Drake',
+        description: 'Drake brings chart-topping singles, emotional verses, and radio-ready beats. Explore some of his biggest hits below.',
+        tracks: [
+          {title: 'God\'s Plan', src: 'https://www.youtube.com/embed/xpVfcZ0ZcFM'},
+          {title: 'In My Feelings', src: 'https://www.youtube.com/embed/DRS_PpOrUZ4'},
+          {title: 'Hotline Bling', src: 'https://www.youtube.com/embed/xCv3OxD-gs0'}
+        ]
+      },
+      nicki: {
+        name: 'Nicki Minaj',
+        description: 'Nicki Minaj is known for powerful verses, playful flows, and pop-rap crossover smash hits.',
+        tracks: [
+          {title: 'Starships', src: 'https://www.youtube.com/embed/SeIJmciN8mo'},
+          {title: 'Super Bass', src: 'https://www.youtube.com/embed/4Y1lZQqQkkI'},
+          {title: 'Anaconda', src: 'https://www.youtube.com/embed/LDZX4ooRsWs'}
+        ]
+      },
+      lilwayne: {
+        name: 'Lil Wayne',
+        description: 'Lil Wayne stands as a rap icon with unforgettable singles and a distinct, influential style.',
+        tracks: [
+          {title: 'Lollipop', src: 'https://www.youtube.com/embed/ZIM1HydF9UA'},
+          {title: 'A Milli', src: 'https://www.youtube.com/embed/YC-qlu7E0Jw'},
+          {title: 'How to Love', src: 'https://www.youtube.com/embed/ESr7mG2gHUE'}
+        ]
+      }
+    };
+    function showArtist(key) {
+      const artist = artists[key];
+      const container = document.getElementById('artist-info');
+      container.innerHTML = `
+        <div class="artist-card">
+          <h2>${artist.name}</h2>
+          <p>${artist.description}</p>
+          ${artist.tracks.map(track => `
+            <div class="track">
+              <strong>${track.title}</strong>
+              <iframe src="${track.src}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+    showArtist('drake');
+  </script>
+</body>
+</html>
 
